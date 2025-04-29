@@ -1,0 +1,79 @@
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.auction-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.auction-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 255, 255, 0.5);
+}
+
+.auction-title a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.auction-title a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.auction-image {
+    width: 2%;
+    max-height: 25px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    margin-bottom: 20px;
+}
+
+.btn-primary,
+.btn-success {
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #00c6ff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0072ff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+h2 {
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 36px;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.countdown {
+    font-weight: bold;
+    font-size: 18px;
+}

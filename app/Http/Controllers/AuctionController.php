@@ -16,6 +16,7 @@ class AuctionController extends Controller
     {
         return view('auctions.create');
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -24,10 +25,11 @@ class AuctionController extends Controller
             'starting_price' => 'required|numeric',
             'ends_at' => 'required|date',
         ]);
-        $validated['user_id'] = 1;
+        $validated['user_id'] = auth()->id();
+        $validated['current_price'] = $validated['starting_price']; 
+
         Auction::create($validated);
         return redirect()->route('auctions.index')->with('success', 'Auction created successfully!');
-
     }
 
     public function show($id)
@@ -35,6 +37,7 @@ class AuctionController extends Controller
         $auction = Auction::with('bids')->findOrFail($id);
         return view('auctions.show', compact('auction'));
     }
+
     public function placeBid(Request $request, $id)
     {
         $auction = Auction::findOrFail($id);
@@ -58,4 +61,16 @@ class AuctionController extends Controller
 
         return redirect()->back()->with('success', 'Bid placed successfully!');
     }
+
+    public function destroy(Auction $auction)
+    {   
+        if (auth()->id() !== $auction->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $auction->delete();
+
+        return redirect()->route('auctions.index')->with('success', 'Auction deleted successfully.');
+    }
+
 }
